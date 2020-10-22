@@ -4,25 +4,33 @@ const app = express()
 const port = 3000
 
 app.use((req, res, next) => {
-  const reqTime = new Date()
-  console.log(`${reqTime.toISOString().slice(0, 10)} ${reqTime.getHours()}:${reqTime.getMinutes()}:${reqTime.getSeconds()} | ${req.method} from ${req.originalUrl}`)
+  req.time = new Date()
+  console.log(`${req.time.toISOString().slice(0, 10)} ${req.time.getHours()}:${req.time.getMinutes()}:${req.time.getSeconds()} ${req.time.getMilliseconds()} | ${req.method} from ${req.originalUrl}`)
   next()
 })
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.send('列出全部 Todo')
+  next()
 })
 
-app.get('/new', (req, res) => {
+app.get('/new', (req, res, next) => {
   res.send('新增 Todo 頁面')
+  next()
 })
 
-app.get('/:id', (req, res) => {
+app.get('/:id', (req, res, next) => {
   res.send('顯示一筆 Todo')
+  next()
 })
 
-app.post('/', (req, res) => {
+app.post('/', (req, res, next) => {
   res.send('新增一筆  Todo')
+  next()
+})
+
+app.use((req, res) => {
+  console.log('Duration: ', Date.now() - req.time, ' ms')
 })
 
 app.listen(port, () => {
