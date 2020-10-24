@@ -8,8 +8,8 @@ This test can
 
 ### Result
 ```
-2020-10-23 10:10:35 | GET from /
-Duration:  5  ms
+2020-10-24 13:58:3 | GET from /
+Duration:  3.7365  ms
 ```
 
 ### Quick Start
@@ -44,4 +44,4 @@ npm run dev
 Elliott Wu [elliottwuTW](https://github.com/elliottwuTW)
 
 #### Version
-1.0.0
+1.1.0
